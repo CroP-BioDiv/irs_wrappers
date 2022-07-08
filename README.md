@@ -1,99 +1,81 @@
 # IRs wrappers
-Wrapper scripts for chloroplast inverted repeats annotation tools.
+
+Wrapper scripts for chloroplast inverted repeats annotation tools. Scripts are implemented in python3 and use [Biopython](https://biopython.org/) package.
+
+List of annotation tools:
+
+| Tool | Script | Source code | Web application |
+| ----------- | ----------- | ----------- | ----------- |
+| Chloë | [chloe.py](chloe.py) | https://github.com/ian-small/chloe | https://chloe.plantenergy.edu.au/ |
+| Chloroplot | [chloroplot.py](chloroplot.py) | https://github.com/shuyuzheng/Chloroplot | https://irscope.shinyapps.io/chloroplot/ |
+| GeSeq | [ge_seq.py](ge_seq.py) | - | https://chlorobox.mpimp-golm.mpg.de/geseq.html |
+| ORG.Annotate | [org_annotate.py](org_annotate.py) | https://git.metabarcoding.org/org-asm/org-annotate | - |
+| PGA | [pga.py](pga.py) | https://github.com/quxiaojian/PGA | - |
+| Plann | [plann.py](plann.py) | https://github.com/daisieh/plann | - |
+| Airpg | [airpg.py](airpg.py) | https://github.com/michaelgruenstaeudl/airpg | - |
+
+
+## Usage
 
 Scripts have same interface:
-- input is filename with chloroplast sequence in fasta or GenBank format,
-- outputs are four numbers of IRs locations (IRa start, IRa end, IRb start, IRb end).
+- input is a filename with chloroplast sequence in fasta or GenBank format,
+- outputs are four numbers of IRs locations (IRa start, IRa end, IRb start, IRb end) or none if IRs were not identified.
 
-Each wrapper script is described with tool specifics and requirenmnets.
-
-Biopython
-
-
-## Chloë
-
-Web: https://chloe.plantenergy.edu.au/ 
-Source code: https://githubSource date.com/ian-small/chloe
+Helper script [run_more.py](run_more.py) is used to run wrapper script on more sequences. Usage:
+'''
+python3 run_more.py <script_name> filename [filename]+
+'''
 
 
-## Chloroplot
+## Implementation specifics
+
+### Chloë
+
+Organelle Annotator.
+
+**Notes:**
+- Ne vrtimo Juliu vec preko web app i to samo accession broj. Moze se i post-ati sekvenca
+
+
+### Chloroplot
 
 The R package Chloroplot wrapped the functions for visualizing the organelle genomes.
 
-**Source code:** https://github.com/shuyuzheng/Chloroplot
-
-**Web page:** https://irscope.shinyapps.io/chloroplot/
-
-**Wrapper script:** [chloroplot.py](chloroplot.py)
-
 **Requirements:**
-- R
-
-**Notes:**
+- R programming language (Rscript)
 
 
-## GeSeq
+### GeSeq
 
 GeSeq is a Web application used for annotation of organelle genomes, in particular chloroplast genomes.
-
-**Source code:** -
-
-**Web page:** https://chlorobox.mpimp-golm.mpg.de/geseq.html
-
-**Wrapper script:** [ge_seq.py](ge_seq.py)
-
-**Requirements:** -
 
 **Notes:**
 - sequence has to be processed with Web application and wrapper extracts IRs location from result GenBank file.
 
 
-
-## ORG.Annotate
+### ORG.Annotate
 
 A pipeline for annotating Chloroplast genomes.
-
-**Source code:** https://git.metabarcoding.org/org-asm/org-annotate 
-
-**Web page:** -
-
-**Wrapper script:** [org_annotate.py](org_annotate.py)
 
 **Requirements:**
 - repseek executable has to be on the PATH or location has to be set with environment variable REPSEEK_EXE.
 - blastn has to be on the PATH.
 
-**Notes:** 
 
-
-## PGA
+### PGA
 
 Plastid Genome Annotator
-
-**Source code:** https://github.com/quxiaojian/PGA
-
-**Web page:** -
-
-**Wrapper script:** [pga.py](pga.py)
 
 **Requirements:**
 - PGA.pl script has to be on the PATH.
 - Check PGA's [requirenments](https://github.com/quxiaojian/PGA) (Perl, blastn)
 
-**Notes:** 
 
-
-## Plann
+### Plann
 
 Plann is a command-line application for annotating chloroplast sequences.
 
-**Source code:** https://github.com/daisieh/plann
-
 Our fork: https://github.com/CroP-BioDiv/plann
-
-**Web page:** -
-
-**Wrapper script:** [plann.py](plann.py)
 
 **Requirements:**
 - plann.pl script has to be on the PATH or location has to be set with environment variable PLANN_SCRIPT.
@@ -103,19 +85,19 @@ Our fork: https://github.com/CroP-BioDiv/plann
 - Plann leaks blastn result files in temp folder. If run on lot of files it can fill partition.
 Files have name of length 10. Delete them with:
 ```
-cd /tmp
-find . -name '??????????' -delete
+find /tmp -name '??????????' -delete
 ```
 
-
-## Airpg
+### Airpg
 
 Automatically accessing the inverted repeats of archived plastid genomes
 
-**Source code:** https://github.com/michaelgruenstaeudl/airpg
 
-**Web page:** -
 
-**Wrapper script:** [airpg.py](airpg.py)
+## Research
 
-**Requirements:** -
+Scripts are used in research paper
+Research reproduction
+Pages describing research papers reproduction:
+
+Towards the Well-Tempered Chloroplast DNA Sequences; reproduction steps.
