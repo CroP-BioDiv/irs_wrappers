@@ -22,9 +22,9 @@ Scripts have same interface:
 - outputs are four numbers of IRs locations (IRa start, IRa end, IRb start, IRb end) or none if IRs were not identified.
 
 Helper script [run_more.py](run_more.py) is used to run wrapper script on more sequences. Usage:
-'''
+```
 python3 run_more.py <script_name> filename [filename]+
-'''
+```
 
 
 ## Implementation specifics
@@ -34,7 +34,8 @@ python3 run_more.py <script_name> filename [filename]+
 Organelle Annotator.
 
 **Notes:**
-- Ne vrtimo Juliu vec preko web app i to samo accession broj. Moze se i post-ati sekvenca
+- Script does not run Julia program, instead it fetches annotation through Chloë web API which is of type
+https://chloe.plantenergy.edu.au/annotate-ncbi?ncid={accession_number}&force_circular=true
 
 
 ### Chloroplot
@@ -96,8 +97,6 @@ Automatically accessing the inverted repeats of archived plastid genomes
 
 ## Research
 
-Scripts are used in research paper
-Research reproduction
-Pages describing research papers reproduction:
-
-Towards the Well-Tempered Chloroplast DNA Sequences; reproduction steps.
+Scripts are result of research paper "Chloroplast genome annotation tools: Challenges and recommendations".
+Similar scripts, implemented in [ZCItools environment](https://github.com/CroP-BioDiv/zcitools), are used to obtain results for the research.
+Reproduction is described on this [page](https://github.com/CroP-BioDiv/zcitools/blob/master/docs/irs_annotation_tools.md).
