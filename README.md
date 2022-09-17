@@ -97,6 +97,9 @@ Automatically accessing the inverted repeats of archived plastid genomes
 
 ## Research
 
-Scripts are result of research paper "Chloroplast genome annotation tools: Challenges and recommendations".
+Scripts are result of research paper "[Chloroplast Genome Annotation Tools: Prolegomena to the Identification of Inverted Repeats
+](https://www.mdpi.com/1422-0067/23/18/10804)".
 Similar scripts, implemented in [ZCItools environment](https://github.com/CroP-BioDiv/zcitools), are used to obtain results for the research.
 Reproduction is described on this [page](https://github.com/CroP-BioDiv/zcitools/blob/master/docs/irs_annotation_tools.md).
+
+
